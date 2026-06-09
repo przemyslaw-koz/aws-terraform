@@ -37,10 +37,13 @@ resource "aws_instance" "app_server" {
   instance_type               = var.instance_type
   iam_instance_profile        = aws_iam_instance_profile.ec2_ssm_profile.name
   associate_public_ip_address = var.associate_public_ip_address
+  user_data                   = var.user_data
 
   root_block_device {
-    volume_size = var.root_block_device.volume_size
-    volume_type = var.root_block_device.volume_type
+    volume_size           = var.root_block_device.volume_size
+    volume_type           = var.root_block_device.volume_type
+    encrypted             = var.root_block_device.encrypted
+    delete_on_termination = var.root_block_device.delete_on_termination
   }
 
   tags = merge(

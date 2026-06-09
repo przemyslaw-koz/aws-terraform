@@ -1,42 +1,42 @@
 variable "instance_name" {
   description = "Instance name"
-  type    = string
-  default = "app-server"
+  type        = string
+  default     = "app-server"
 }
 
 variable "instance_type" {
   description = "Instance type"
-  type    = string
-  default = "t3.micro"
+  type        = string
+  default     = "t3.micro"
 }
 
 variable "user_data" {
   description = "User data to pass to the instance"
-  type    = string
-  default = ""
+  type        = string
+  default     = ""
 }
 
 variable "root_block_device" {
   description = "Root block device config"
 
   type = object({
-    volume_size = number
-    volume_type = string
-    encrypted   = bool
+    volume_size           = number
+    volume_type           = string
+    encrypted             = bool
     delete_on_termination = bool
   })
 
   default = {
-    volume_size = 8
-    volume_type = "gp3"
-    encrypted   = true
+    volume_size           = 8
+    volume_type           = "gp3"
+    encrypted             = true
     delete_on_termination = true
   }
 }
 
 variable "common_tags" {
   description = "Common tags to be applied to all resources"
-  type = map(string)  
+  type        = map(string)
 
   default = {
     Owner     = "PrzemyslawKozlowski"
@@ -46,12 +46,24 @@ variable "common_tags" {
 
 variable "associate_public_ip_address" {
   description = "Associate public IP address to the instance"
-  type    = bool
-  default = true
+  type        = bool
+  default     = true
 }
 
 variable "ami_ssm_parameter_name" {
   description = "AMI SSM parameter name pointing to the AMI image to use"
-  type    = string
-  default = "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
+  type        = string
+  default     = "/aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64"
+}
+
+variable "subnet_id" {
+  description = "Subnet ID to launch the instance in"
+  type        = string
+  default     = ""
+}
+
+variable "security_group_ids" {
+  description = "Security group IDs to attach to the instance"
+  type        = list(string)
+  default     = []
 }
