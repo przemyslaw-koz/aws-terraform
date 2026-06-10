@@ -36,6 +36,8 @@ resource "aws_instance" "app_server" {
   ami                         = data.aws_ssm_parameter.amazon_linux_2023.value
   instance_type               = var.instance_type
   iam_instance_profile        = aws_iam_instance_profile.ec2_ssm_profile.name
+  subnet_id                   = var.subnet_id
+  vpc_security_group_ids      = length(var.security_group_ids) > 0 ? var.security_group_ids : null
   associate_public_ip_address = var.associate_public_ip_address
   user_data                   = var.user_data
 

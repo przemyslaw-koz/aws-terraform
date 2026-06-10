@@ -1,0 +1,34 @@
+variable "aws_region" {
+  description = "AWS region used by Terraform"
+  type        = string
+  default     = "eu-north-1"
+}
+
+variable "aws_profile" {
+  description = "AWS CLI profile used by Terraform"
+  type        = string
+  default     = "terraform-lab"
+}
+
+variable "common_tags" {
+  type = map(string)
+
+  default = {
+    Owner     = "PrzemyslawKozlowski"
+    ManagedBy = "Terraform"
+  }
+}
+
+variable "stack_name" {
+  type    = string
+  default = "terraform-lab-peering"
+}
+
+variable "my_ip" {
+  type = string
+}
+
+variable "peer_owner_id" {
+  type        = string
+  description = "AWS account ID of the peer VPC owner"
+}

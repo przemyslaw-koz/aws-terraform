@@ -59,7 +59,7 @@ variable "ami_ssm_parameter_name" {
 variable "subnet_id" {
   description = "Subnet ID to launch the instance in"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "security_group_ids" {
