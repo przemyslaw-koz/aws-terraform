@@ -25,10 +25,11 @@ variable "stack_name" {
 }
 
 variable "my_ip" {
-  type = string
+  type    = string
+  description = "My IP address"
 }
 
 variable "peer_owner_id" {
-  type        = string
+  type    = string
   description = "AWS account ID of the peer VPC owner"
 }

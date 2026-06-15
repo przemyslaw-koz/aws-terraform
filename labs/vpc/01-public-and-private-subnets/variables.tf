@@ -26,5 +26,5 @@ variable "stack_name" {
 
 variable "my_ip" {
   type    = string
-  default = "192.168.1.1" # my home IP address
+  default = "0.0.0.0/0" # My IP address is in tfvars file"
 }
