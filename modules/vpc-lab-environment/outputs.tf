@@ -19,3 +19,9 @@ output "private_server_instance_id" {
 output "private_server_private_ip" {
   value = module.private_server.instance_private_ip
 }
+output "private_route_table_id" {
+  value = module.network.private_route_table_id
+}
+output "public_route_table_id" {
+  value = module.network.public_route_table_id
+}
