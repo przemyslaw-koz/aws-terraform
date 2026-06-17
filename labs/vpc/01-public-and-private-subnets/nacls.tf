@@ -29,9 +29,9 @@ resource "aws_network_acl" "public" {
     to_port    = 65535
   }
 
-  tags = merge(var.common_tags, {
+  tags = {
     Name = "${var.stack_name}-public-nacl"
-  })
+  }
 }
 
 resource "aws_network_acl" "private" {
@@ -65,7 +65,7 @@ resource "aws_network_acl" "private" {
     to_port    = 65535
   }
 
-  tags = merge(var.common_tags, {
+  tags = {
     Name = "${var.stack_name}-private-nacl"
-  })
+  }
 }

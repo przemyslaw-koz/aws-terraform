@@ -17,7 +17,9 @@ resource "aws_iam_role" "ec2_ssm_role" {
       }
     ]
   })
-  tags = var.common_tags
+  tags = {
+    Name = "${var.instance_name}-ssm-role"
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "ec2_ssm_managed_instance" {
@@ -29,7 +31,9 @@ resource "aws_iam_instance_profile" "ec2_ssm_profile" {
   name = "${var.instance_name}-ssm-profile"
   role = aws_iam_role.ec2_ssm_role.name
 
-  tags = var.common_tags
+  tags = {
+    Name = "${var.instance_name}-ssm-profile"
+  }
 }
 
 resource "aws_instance" "app_server" {
@@ -48,10 +52,9 @@ resource "aws_instance" "app_server" {
     delete_on_termination = var.root_block_device.delete_on_termination
   }
 
-  tags = merge(
-    var.common_tags,
-    {
-      Name = var.instance_name
-  })
+  tags = {
+
+    Name = var.instance_name
+  }
 }
 

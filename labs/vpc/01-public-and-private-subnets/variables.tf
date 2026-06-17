@@ -10,18 +10,9 @@ variable "aws_profile" {
   default     = "terraform-lab"
 }
 
-variable "common_tags" {
-  type = map(string)
-
-  default = {
-    Owner     = "PrzemyslawKozlowski"
-    ManagedBy = "Terraform"
-  }
-}
-
 variable "stack_name" {
   type    = string
-  default = "terraform-lab"
+  default = "terraform-lab-vpc-01"
 }
 
 variable "my_ip" {

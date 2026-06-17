@@ -26,10 +26,10 @@ resource "aws_security_group" "private" {
 resource "aws_vpc_security_group_ingress_rule" "private" {
   security_group_id = aws_security_group.private.id
 
-  referenced_security_group_id   = aws_security_group.public.id
-  from_port   = 22
-  to_port     = 22
-  ip_protocol = "tcp"
+  referenced_security_group_id = aws_security_group.public.id
+  from_port                    = 22
+  to_port                      = 22
+  ip_protocol                  = "tcp"
 }
 
 resource "aws_vpc_security_group_egress_rule" "private" {

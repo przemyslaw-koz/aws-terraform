@@ -5,9 +5,9 @@ resource "aws_route_table" "public" {
     gateway_id = aws_internet_gateway.igw.id
   }
 
-  tags = merge(var.common_tags, {
+  tags = {
     Name = "${var.stack_name}-public-rt"
-  })
+  }
 }
 
 resource "aws_route_table" "private" {
@@ -17,9 +17,9 @@ resource "aws_route_table" "private" {
     nat_gateway_id = aws_nat_gateway.nat_gateway.id
   }
 
-  tags = merge(var.common_tags, {
+  tags = {
     Name = "${var.stack_name}-private-rt"
-  })
+  }
 }
 
 resource "aws_route_table_association" "public" {
