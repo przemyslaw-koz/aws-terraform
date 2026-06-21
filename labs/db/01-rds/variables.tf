@@ -12,10 +12,11 @@ variable "aws_profile" {
 
 variable "stack_name" {
   type    = string
-  default = "terraform-lab-peering"
+  default = "terraform-lab-rds"
 }
 
-variable "peer_owner_id" {
+variable "my_ip" {
   type        = string
-  description = "AWS account ID of the peer VPC owner"
+  description = "My IP address"
+  default     = "0.0.0.0/0"
 }

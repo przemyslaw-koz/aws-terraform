@@ -3,6 +3,7 @@ resource "aws_internet_gateway" "igw" {
 
   tags = {
     Name = "${var.stack_name}-igw"
+    Component = "igw"
   }
 }
 
@@ -14,6 +15,7 @@ resource "aws_nat_gateway" "nat_gateway" {
 
   tags = {
     Name = "${var.stack_name}-nat-gw"
+    Component = "nat"
   }
 }
 
@@ -22,5 +24,6 @@ resource "aws_eip" "nat_eip" {
 
   tags = {
     Name = "${var.stack_name}-nat-eip"
+    Component = "eip"
   }
 }

@@ -12,7 +12,8 @@ resource "aws_vpc_peering_connection" "first_vpc_second_vpc" {
     allow_remote_vpc_dns_resolution = true
   }
 
-  tags = merge(var.common_tags, {
-    Name = "${var.stack_name}-vpc-peering"
-  })
+  tags = {
+    Name      = "${var.stack_name}-vpc-peering"
+    Component = "vpc-peering"
+  }
 }

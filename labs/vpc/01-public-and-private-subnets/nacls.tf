@@ -31,6 +31,7 @@ resource "aws_network_acl" "public" {
 
   tags = {
     Name = "${var.stack_name}-public-nacl"
+    Component = "public-nacl"
   }
 }
 
@@ -67,5 +68,6 @@ resource "aws_network_acl" "private" {
 
   tags = {
     Name = "${var.stack_name}-private-nacl"
+    Component = "private-nacl"
   }
 }

@@ -34,16 +34,6 @@ variable "root_block_device" {
   }
 }
 
-variable "common_tags" {
-  description = "Common tags to be applied to all resources"
-  type        = map(string)
-
-  default = {
-    Owner     = "PrzemyslawKozlowski"
-    ManagedBy = "Terraform"
-  }
-}
-
 variable "associate_public_ip_address" {
   description = "Associate public IP address to the instance"
   type        = bool
@@ -66,4 +56,10 @@ variable "security_group_ids" {
   description = "Security group IDs to attach to the instance"
   type        = list(string)
   default     = []
+}
+
+variable "component" {
+  description = "Logical role of the instance, used as the Component tag (e.g. bastion, private-server)"
+  type        = string
+  default     = null
 }

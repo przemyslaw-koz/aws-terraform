@@ -3,9 +3,10 @@ resource "aws_vpc" "first_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-  tags = merge(var.common_tags, {
-    Name = "${var.stack_name}-vpc"
-  })
+  tags = {
+    Name      = "${var.stack_name}-first-vpc"
+    Component = "first-vpc"
+  }
 }
 
 resource "aws_vpc" "second_vpc" {
@@ -13,7 +14,8 @@ resource "aws_vpc" "second_vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
 
-  tags = merge(var.common_tags, {
-    Name = "${var.stack_name}-vpc"
-  })
+  tags = {
+    Name      = "${var.stack_name}-second-vpc"
+    Component = "second-vpc"
+  }
 }

@@ -4,7 +4,7 @@ locals {
     ManagedBy    = "Terraform"
     Project      = "aws-terraform-lab"
     Environment  = "lab"
-    Lab          = "vpc/01-public-and-private-subnets"
+    Lab          = "vpc/02-vpc-peering"
     Stack        = var.stack_name
     AutoShutdown = "true"
   }

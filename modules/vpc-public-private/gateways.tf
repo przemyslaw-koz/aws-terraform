@@ -1,17 +1,19 @@
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
-  tags = merge(var.common_tags, {
-    Name = "${var.stack_name}-igw"
-  })
+  tags = {
+    Name      = "${var.stack_name}-igw"
+    Component = "igw"
+  }
 }
 
 resource "aws_eip" "nat_eip" {
   domain = "vpc"
 
-  tags = merge(var.common_tags, {
-    Name = "${var.stack_name}-nat-eip"
-  })
+  tags = {
+    Name      = "${var.stack_name}-nat-eip"
+    Component = "eip"
+  }
 }
 
 resource "aws_nat_gateway" "nat_gateway" {
@@ -20,7 +22,8 @@ resource "aws_nat_gateway" "nat_gateway" {
 
   depends_on = [aws_internet_gateway.igw]
 
-  tags = merge(var.common_tags, {
-    Name = "${var.stack_name}-nat-gw"
-  })
+  tags = {
+    Name      = "${var.stack_name}-nat-gw"
+    Component = "nat"
+  }
 }

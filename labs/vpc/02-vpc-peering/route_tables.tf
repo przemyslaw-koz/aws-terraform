@@ -5,9 +5,10 @@ resource "aws_route_table" "first_vpc" {
     vpc_peering_connection_id = aws_vpc_peering_connection.first_vpc_second_vpc.id
   }
 
-  tags = merge(var.common_tags, {
-    Name = "${var.stack_name}-first-vpc-rt"
-  })
+  tags = {
+    Name      = "${var.stack_name}-first-vpc-rt"
+    Component = "first-vpc-rt"
+  }
 }
 
 resource "aws_route_table" "second_vpc" {
@@ -17,9 +18,10 @@ resource "aws_route_table" "second_vpc" {
     vpc_peering_connection_id = aws_vpc_peering_connection.first_vpc_second_vpc.id
   }
 
-  tags = merge(var.common_tags, {
-    Name = "${var.stack_name}-second-vpc-rt"
-  })
+  tags = {
+    Name      = "${var.stack_name}-second-vpc-rt"
+    Component = "second-vpc-rt"
+  }
 }
 
 resource "aws_route_table_association" "first_vpc" {

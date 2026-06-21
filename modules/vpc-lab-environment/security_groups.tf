@@ -1,6 +1,11 @@
 resource "aws_security_group" "bastion" {
   name   = "${var.stack_name}-bastion-sg"
   vpc_id = module.network.vpc_id
+
+  tags = {
+    Name      = "${var.stack_name}-bastion-sg"
+    Component = "bastion-sg"
+  }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "bastion" {
@@ -22,6 +27,11 @@ resource "aws_vpc_security_group_egress_rule" "bastion" {
 resource "aws_security_group" "private_server" {
   name   = "${var.stack_name}-private-server-sg"
   vpc_id = module.network.vpc_id
+
+  tags = {
+    Name      = "${var.stack_name}-private-server-sg"
+    Component = "private-server-sg"
+  }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "private_server" {

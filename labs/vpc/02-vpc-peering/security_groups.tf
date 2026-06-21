@@ -1,6 +1,10 @@
 resource "aws_security_group" "first_vpc" {
   name   = "${var.stack_name}-first-vpc-sg"
   vpc_id = aws_vpc.first_vpc.id
+  tags = {
+    Name      = "${var.stack_name}-first-vpc-sg"
+    Component = "first-vpc-sg"
+  }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "first_vpc" {
@@ -18,6 +22,10 @@ resource "aws_vpc_security_group_egress_rule" "first_vpc" {
 resource "aws_security_group" "second_vpc" {
   name   = "${var.stack_name}-second-vpc-sg"
   vpc_id = aws_vpc.second_vpc.id
+  tags = {
+    Name      = "${var.stack_name}-second-vpc-sg"
+    Component = "second-vpc-sg"
+  }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "second_vpc" {

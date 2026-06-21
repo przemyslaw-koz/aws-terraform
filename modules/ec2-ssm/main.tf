@@ -2,6 +2,10 @@ data "aws_ssm_parameter" "amazon_linux_2023" {
   name = var.ami_ssm_parameter_name
 }
 
+locals {
+  component_tags = var.component != null ? { Component = var.component } : {}
+}
+
 resource "aws_iam_role" "ec2_ssm_role" {
   name = "${var.instance_name}-ssm-role"
 
@@ -17,9 +21,9 @@ resource "aws_iam_role" "ec2_ssm_role" {
       }
     ]
   })
-  tags = {
+  tags = merge({
     Name = "${var.instance_name}-ssm-role"
-  }
+  }, local.component_tags)
 }
 
 resource "aws_iam_role_policy_attachment" "ec2_ssm_managed_instance" {
@@ -31,9 +35,9 @@ resource "aws_iam_instance_profile" "ec2_ssm_profile" {
   name = "${var.instance_name}-ssm-profile"
   role = aws_iam_role.ec2_ssm_role.name
 
-  tags = {
+  tags = merge({
     Name = "${var.instance_name}-ssm-profile"
-  }
+  }, local.component_tags)
 }
 
 resource "aws_instance" "app_server" {
@@ -50,11 +54,13 @@ resource "aws_instance" "app_server" {
     volume_type           = var.root_block_device.volume_type
     encrypted             = var.root_block_device.encrypted
     delete_on_termination = var.root_block_device.delete_on_termination
+    tags = merge({
+      Name = "${var.instance_name}-root-volume"
+    }, local.component_tags)
   }
 
-  tags = {
-
+  tags = merge({
     Name = var.instance_name
-  }
+  }, local.component_tags)
 }
 

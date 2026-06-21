@@ -1,5 +1,6 @@
 module "public_bastion" {
   source        = "../../../modules/ec2-ssm"
+  component     = "bastion"
   instance_name = "${var.stack_name}-public-bastion"
   instance_type = "t3.micro"
   root_block_device = {
@@ -8,7 +9,6 @@ module "public_bastion" {
     delete_on_termination = true
     encrypted             = false
   }
-  common_tags                 = var.common_tags
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.public.id
   security_group_ids          = [aws_security_group.public.id]
@@ -16,6 +16,7 @@ module "public_bastion" {
 
 module "private_server" {
   source        = "../../../modules/ec2-ssm"
+  component     = "private-server"
   instance_name = "${var.stack_name}-private-server"
   instance_type = "t3.micro"
   root_block_device = {
@@ -24,7 +25,7 @@ module "private_server" {
     delete_on_termination = true
     encrypted             = false
   }
-  common_tags        = var.common_tags
+  associate_public_ip_address = false
   subnet_id          = aws_subnet.private.id
   security_group_ids = [aws_security_group.private.id]
 }

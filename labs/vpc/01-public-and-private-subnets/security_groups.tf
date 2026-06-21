@@ -1,6 +1,11 @@
 resource "aws_security_group" "public" {
   name   = "${var.stack_name}-public-sg"
   vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "${var.stack_name}-public-sg"
+    Component = "public-sg"
+  }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "public" {
@@ -21,6 +26,11 @@ resource "aws_vpc_security_group_egress_rule" "public" {
 resource "aws_security_group" "private" {
   name   = "${var.stack_name}-private-sg"
   vpc_id = aws_vpc.main.id
+
+  tags = {
+    Name = "${var.stack_name}-private-sg"
+    Component = "private-sg"
+  }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "private" {
