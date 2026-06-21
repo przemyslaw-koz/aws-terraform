@@ -41,3 +41,9 @@ output "private_route_table_id" {
 output "public_route_table_id" {
   value = module.network.public_route_table_id
 }
+output "bastion_security_group_id" {
+  value = aws_security_group.bastion.id
+}
+output "private_server_security_group_id" {
+  value = aws_security_group.private_server.id
+}
