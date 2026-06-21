@@ -4,7 +4,7 @@ locals {
     ManagedBy    = "Terraform"
     Project      = "aws-terraform-lab"
     Environment  = "lab"
-    Lab          = "vpc/03-vpc-endpoint"
+    Lab          = "basic-lab-environment/01-vpc-2pub-sn-private-sn"
     Stack        = var.stack_name
     AutoShutdown = "true"
   }

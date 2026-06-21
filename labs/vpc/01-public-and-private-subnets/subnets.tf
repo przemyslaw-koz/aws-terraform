@@ -4,6 +4,7 @@ resource "aws_subnet" "public" {
   availability_zone = "eu-north-1a"
   tags = {
     Name = "${var.stack_name}-public-sn"
+    Component = "public-sn"
   }
 }
 
@@ -13,5 +14,6 @@ resource "aws_subnet" "private" {
   availability_zone = "eu-north-1b"
   tags = {
     Name = "${var.stack_name}-private-sn"
+    Component = "private-sn"
   }
 }

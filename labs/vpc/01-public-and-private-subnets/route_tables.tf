@@ -7,7 +7,8 @@ resource "aws_route_table" "public" {
 
   tags = {
     Name = "${var.stack_name}-public-rt"
-  }
+    Component = "public-rt"
+    }
 }
 
 resource "aws_route_table" "private" {
@@ -19,6 +20,7 @@ resource "aws_route_table" "private" {
 
   tags = {
     Name = "${var.stack_name}-private-rt"
+    Component = "private-rt"
   }
 }
 
