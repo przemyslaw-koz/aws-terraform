@@ -4,7 +4,7 @@ locals {
     ManagedBy    = "Terraform"
     Project      = "aws-terraform-lab"
     Environment  = "lab"
-    Lab          = "s3/01-secure-private-bucket"
+    Lab          = "vpc/01-public-and-private-subnets"
     Stack        = var.stack_name
     AutoShutdown = "true"
   }
