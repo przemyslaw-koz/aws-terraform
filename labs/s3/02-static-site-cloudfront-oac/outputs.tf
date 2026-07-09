@@ -1,11 +1,11 @@
 output "bucket_id" {
-  value = aws_s3_bucket.private_bucket.id
+  value = module.s3_bucket.bucket_id
 }
 
 output "bucket_arn" {
-  value = aws_s3_bucket.private_bucket.arn
+  value = module.s3_bucket.bucket_arn
 }
 
 output "bucket_name" {
-  value = aws_s3_bucket.private_bucket.bucket
+  value = module.s3_bucket.bucket_name
 }
